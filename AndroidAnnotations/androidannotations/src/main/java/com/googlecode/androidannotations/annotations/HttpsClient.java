@@ -25,7 +25,7 @@ import java.lang.annotation.Target;
  * and TrustStore configured to perform an <b>HTTPS</b> request <br/>
  * <br/>
  * 
- * All the parameters are optional <br/>
+ * All the parameters are optional<br/>
  * <br/>
  * 
  * <i>trustStore</i>: int, Resource id of your trust store file ex
@@ -45,12 +45,13 @@ import java.lang.annotation.Target;
  * <code>changeit</code>) <br/>
  * <br/>
  * 
- * <i>hostnameVerif</i>: boolean, Turn on or off strict hostname verification
- * (default <code>false</code>) Hostname in certificate (DN) must match the URL. <br/>
+ * <i>allowAllHostnames</i>: boolean, if true, authorizes any TLS/SSL hostname
+ * (default <code>true</code>) If false, Hostname in certificate (DN) must match
+ * the URL.<br/>
  * <br/>
  * 
  * <b>Note</b>:
- * <tt>Until ICS, Android accept [Key|Trust]store only in BKS format
+ * <tt>Prior to ICS, Android accepts [Key|Trust]store only in BKS format
  * (Bouncycastle Key Store)</tt>
  * 
  * @author Nabil Hachicha
@@ -68,5 +69,5 @@ public @interface HttpsClient {
 
 	String keyStorePwd() default DEFAULT_PASSWD;
 
-	boolean hostnameVerif() default false;
+	boolean allowAllHostnames() default true;
 }
